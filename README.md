@@ -6,31 +6,82 @@ Countdown timers to keep track of a bunch of Python conference deadlines.
 
 Contributions are very welcome!
 
+![GIF of adding a conference to pythondeadlin.es](static/img/pythondeadlines-edit.gif)
+
 To add or update a deadline:
 - Fork the repository
 - Update `_data/conferences.yml`
 - Make sure it has the `title`, `year`, `id`, `link`, `cfp`, `timezone`, `date`, `place`, `sub` attributes
-    + See available timezone strings [here](https://momentjs.com/timezone/).
+    + This [online web app](https://timezonefinder.michelfe.it/) makes it easy to find timezones – just click! 
+      (Based on [timezonefinder](https://github.com/jannikmi/timezonefinder) library)
+    + Alternatively, see available timezone strings [here](https://momentjs.com/timezone/).
 - Optionally add a `note`
-- Example:
-    ```yaml
-    - title: BestConf                          # Title of conference without year
-      year: 2022                               # Year
-      id: bestconf22                           # title as lower case + last two digits of year
-      full_name: Best Conference for Anything  # Full conference name (Optional)
-      link: link-to-website.com                # URL to conference
-      cfp: 'YYYY-MM-DD HH:mm:ss'               # Deadline for Call for Participation / Proposals
-      workshop_deadline: 'YYYY-MM-DD HH:mm:ss' # Workshop deadline if different from cfp (Optional)
-      tutorial_deadline: 'YYYY-MM-DD HH:mm:ss' # Tutorial deadline if different from cfp (Optional)
-      timezone: Asia/Seoul                     # Standard IANA Timezones (Omit for AoE)
-      place: Incheon, South Korea              # City, Country
-      date: September, 18-22, 2022             # Nicely written dates of conference
-      start: YYYY-MM-DD                        # Start date of conference for calendar
-      end: YYYY-MM-DD                          # End date of conference for calendar
-      sub: PY                                  # Type of conference (see or add _data/types.yml)
-      note: Important                          # In case there are extra notes about the conference (Optional)
-    ```
-- Send a pull request
+- Send a [pull request](_data/conferences.yml)
+
+If that is not possible you can try and submit your conference through this [Google Form](https://forms.gle/UUqiprHjRfvGp6Fs6) but that may take a second.
+
+### Example
+
+```yaml
+- title: BestConf                          # Title of conference without year
+  year: 2022                               # Year
+  link: link-to-website.com                # URL to conference
+  cfp_link: link-to-cfp.com                 # URL to call for proposals (Optional)
+  cfp: 'YYYY-MM-DD HH:mm:ss'               # Deadline for Call for Participation / Proposals
+  workshop_deadline: 'YYYY-MM-DD HH:mm:ss' # Workshop deadline if different from cfp (Optional)
+  tutorial_deadline: 'YYYY-MM-DD HH:mm:ss' # Tutorial deadline if different from cfp (Optional)
+  timezone: Asia/Seoul                     # Standard IANA Timezones (Omit for AoE)
+  place: Incheon, South Korea              # City, Country
+  date: September 18 - 22, 2022            # Nicely written dates of conference
+  start: YYYY-MM-DD                        # Start date of conference for calendar
+  end: YYYY-MM-DD                          # End date of conference for calendar
+  sponsor: link-to-sponsor.page            # URL to Sponsorship page (Optional)
+  finaid: link-to-finaid.page              # URL to Financial Aid page (Optional)
+  twitter: BestConfEver                    # Twitter handle of conference (Optional)
+  mastodon: https://mastodon.social/@bconf # Mastodon handle of conference (Optional)
+  sub: PY                                  # Type of conference (see or add _data/types.yml)
+  note: Important                          # In case there are extra notes about the conference (Optional)
+  location:                                # Geolocation for inclusion in map
+    latitude: 0.00
+    longitude: 0.00
+```
+
+### Description of entries
+
+| `sub`       | Description                                        | Type    | Required |
+| ----------- | ------------------------------------------------- | ------- | -------- |
+| `title`     | Title of the conference                           | `str`   | ✔       |
+| `year`      | Year of this conference                           | `int`   | ✔       |
+| `link`      | URL to conference                                 | `str`   | ✔       |
+| `cfp_link`   | URL to call for proposals                         | `str`   |          |
+| `cfp`       | Deadline for Call for Participation / Proposals   | `str`   | ✔       |
+| `workshop_deadline` | Workshop deadline if different from cfp   | `str`   |          |
+| `tutorial_deadline` | Tutorial deadline if different from cfp   | `str`   |          |
+| `timezone`  | Standard [IANA Timezones](https://timezonefinder.michelfe.it/) (Omit for AoE)            | `str`   | ✔       |
+| `place`     | City, Country                                     | `str`   | ✔       |
+| `date`      | Nicely written dates of conference                | `str`   | ✔       |
+| `start`     | Start date of conference for calendar             | `date`  | ✔       |
+| `end`       | End date of conference for calendar               | `date`  | ✔       |
+| `finaid`    | URL to financial aid information                  | `str`   |          |
+| `sponsor`   | URL to sponsorship opportunities                  | `str`   |          |
+| `twitter`   | Twitter handle of conference                      | `str`   |          |
+| `mastodon`  | Mastodon handle of conference                     | `str`   |          |
+| `sub`       | Type of conference                                | `str`   |          |
+| `note`      | Extra notes about the conference                  | `str`   |          |
+| `location`  | Geolocation for inclusion in map                  | `str`   |          |
+| `latitude`  | Latitude of venue                                 | `float` |          |
+| `longitude` | Longitude of venue                                | `float` |          |
+
+
+### Conference types for `sub`
+
+| `sub`    | Category name     |
+| -------- | ----------------- |
+| `PY`     | General Python    |
+| `SCIPY`  | Scientific Python |                                              |
+| `PYDATA` | Python for Data   |
+| `WEB`    | Python for Web    |
+
 
 ## Forks & other useful listings
 
